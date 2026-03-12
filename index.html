@@ -1,261 +1,338 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Maurizio Puliafito</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maurizio Puliafito</title>
+  <meta name="description" content="Digital business card - Maurizio Puliafito" />
+  <style>
+    :root{
+      --bg:#eef3f8;
+      --card:#ffffff;
+      --primary:#003b6f;
+      --accent:#0b84d8;
+      --text:#102033;
+      --muted:#5c6b7a;
+      --line:#d9e2ec;
+      --radius:18px;
+      --shadow:0 15px 40px rgba(0,0,0,0.12);
+    }
 
-<style>
+    *{
+      box-sizing:border-box;
+    }
 
-:root{
---bg:#eef3f8;
---card:#ffffff;
---primary:#003b6f;
---accent:#0b84d8;
---text:#102033;
---muted:#5c6b7a;
---line:#d9e2ec;
---radius:18px;
-}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      background:linear-gradient(135deg,#eaf2f8,#f7fbff);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:100vh;
+      padding:20px;
+      color:var(--text);
+    }
 
-body{
-margin:0;
-font-family:Arial, Helvetica, sans-serif;
-background:linear-gradient(135deg,#eaf2f8,#f7fbff);
-display:flex;
-align-items:center;
-justify-content:center;
-min-height:100vh;
-padding:20px;
-color:var(--text);
-}
+    .card{
+      background:white;
+      max-width:620px;
+      width:100%;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
 
-.card{
-background:white;
-max-width:560px;
-width:100%;
-border-radius:var(--radius);
-box-shadow:0 15px 40px rgba(0,0,0,0.12);
-overflow:hidden;
-}
+    .topbar{
+      height:8px;
+      background:linear-gradient(90deg,#003b6f,#0b84d8);
+    }
 
-.topbar{
-height:8px;
-background:linear-gradient(90deg,#003b6f,#0b84d8);
-}
+    .hero{
+      padding:35px 30px 20px;
+    }
 
-.hero{
-padding:35px 30px 20px;
-}
+    h1{
+      margin:0;
+      font-size:34px;
+      color:#003b6f;
+      line-height:1.1;
+    }
 
-h1{
-margin:0;
-font-size:34px;
-color:#003b6f;
-}
+    .role{
+      margin-top:10px;
+      font-size:20px;
+      font-weight:600;
+      line-height:1.35;
+    }
 
-.role{
-margin-top:10px;
-font-size:20px;
-font-weight:600;
-}
+    .description{
+      margin-top:12px;
+      font-size:15px;
+      line-height:1.6;
+      color:var(--muted);
+    }
 
-.description{
-margin-top:12px;
-font-size:15px;
-line-height:1.6;
-color:var(--muted);
-}
+    .info{
+      padding:0 30px;
+    }
 
-.info{
-padding:0 30px;
-}
+    .info-box{
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:15px;
+      background:#fbfdff;
+    }
 
-.info-box{
-border:1px solid var(--line);
-border-radius:14px;
-padding:15px;
-background:#fbfdff;
-}
+    .row{
+      display:grid;
+      grid-template-columns:130px 1fr;
+      gap:10px;
+      padding:10px 0;
+      border-bottom:1px solid var(--line);
+    }
 
-.row{
-display:grid;
-grid-template-columns:120px 1fr;
-padding:10px 0;
-border-bottom:1px solid var(--line);
-}
+    .row:last-child{
+      border-bottom:none;
+    }
 
-.row:last-child{
-border-bottom:none;
-}
+    .label{
+      font-size:13px;
+      font-weight:bold;
+      color:#005792;
+      text-transform:uppercase;
+      letter-spacing:0.4px;
+    }
 
-.label{
-font-size:13px;
-font-weight:bold;
-color:#005792;
-text-transform:uppercase;
-}
+    .value{
+      font-size:16px;
+      line-height:1.5;
+      word-break:break-word;
+    }
 
-.value{
-font-size:16px;
-}
+    .value a{
+      text-decoration:none;
+      color:#003b6f;
+      font-weight:600;
+    }
 
-.value a{
-text-decoration:none;
-color:#003b6f;
-font-weight:600;
-}
+    .actions{
+      padding:25px 30px 18px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+    }
 
-.actions{
-padding:25px 30px;
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:12px;
-}
+    .btn{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px;
+      border-radius:12px;
+      font-weight:bold;
+      text-decoration:none;
+      font-size:16px;
+      min-height:52px;
+      transition:transform 0.15s ease, box-shadow 0.15s ease;
+    }
 
-.btn{
-display:flex;
-align-items:center;
-justify-content:center;
-padding:14px;
-border-radius:12px;
-font-weight:bold;
-text-decoration:none;
-font-size:16px;
-}
+    .btn:hover{
+      transform:translateY(-1px);
+      box-shadow:0 8px 24px rgba(0,59,111,0.12);
+    }
 
-.btn-primary{
-background:#003b6f;
-color:white;
-}
+    .btn-primary{
+      background:#003b6f;
+      color:white;
+    }
 
-.btn-secondary{
-background:#0b84d8;
-color:white;
-}
+    .btn-secondary{
+      background:#0b84d8;
+      color:white;
+    }
 
-.btn-light{
-background:white;
-border:1px solid var(--line);
-color:#003b6f;
-}
+    .btn-light{
+      background:white;
+      border:1px solid var(--line);
+      color:#003b6f;
+    }
 
-.footer{
-padding:0 30px 25px;
-font-size:13px;
-color:#5c6b7a;
-text-align:center;
-}
+    .qr-section{
+      padding:8px 30px 24px;
+    }
 
-@media(max-width:600px){
+    .qr-box{
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:#fbfdff;
+      padding:20px;
+      text-align:center;
+    }
 
-.row{
-grid-template-columns:1fr;
-}
+    .qr-title{
+      margin:0 0 8px 0;
+      font-size:15px;
+      font-weight:700;
+      color:#003b6f;
+    }
 
-.actions{
-grid-template-columns:1fr;
-}
+    .qr-subtitle{
+      margin:0 0 16px 0;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.5;
+    }
 
-}
+    .qr-box img{
+      width:160px;
+      height:160px;
+      max-width:100%;
+      border-radius:10px;
+      background:white;
+      padding:8px;
+      border:1px solid var(--line);
+    }
 
-</style>
+    .site-link{
+      margin-top:14px;
+      font-size:14px;
+      color:var(--muted);
+      word-break:break-all;
+    }
+
+    .site-link a{
+      color:#003b6f;
+      text-decoration:none;
+      font-weight:600;
+    }
+
+    .footer{
+      padding:0 30px 25px;
+      font-size:13px;
+      color:#5c6b7a;
+      text-align:center;
+    }
+
+    @media(max-width:600px){
+      .row{
+        grid-template-columns:1fr;
+        gap:4px;
+      }
+
+      .actions{
+        grid-template-columns:1fr;
+      }
+
+      h1{
+        font-size:30px;
+      }
+
+      .role{
+        font-size:18px;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <div class="card">
+    <div class="topbar"></div>
 
-<div class="card">
+    <section class="hero">
+      <h1>Maurizio Puliafito</h1>
 
-<div class="topbar"></div>
+      <div class="role">
+        Head of Weapon Systems &amp; Underwater Sensors
+      </div>
 
-<section class="hero">
+      <div class="description">
+        Team Lead
+      </div>
+    </section>
 
-<h1>Maurizio Puliafito</h1>
+    <section class="info">
+      <div class="info-box">
+        <div class="row">
+          <div class="label">Company</div>
+          <div class="value">Fincantieri S.p.A.</div>
+        </div>
 
-<div class="role">
-Head of Weapon Systems & Underwater Sensors
-</div>
+        <div class="row">
+          <div class="label">Department</div>
+          <div class="value">Submarines Functional Design Department</div>
+        </div>
 
-<div class="description">
-Strategic and technical leadership in weapon systems and underwater sensors,
-with focus on integration, operational effectiveness and naval capability development.
-</div>
+        <div class="row">
+          <div class="label">Phone</div>
+          <div class="value">
+            <a href="tel:+393421484840">+39 342 148 4840</a>
+          </div>
+        </div>
 
-</section>
+        <div class="row">
+          <div class="label">Email</div>
+          <div class="value">
+            <a href="mailto:maurizio.puliafito@fincantieri.it">maurizio.puliafito@fincantieri.it</a>
+          </div>
+        </div>
 
-<section class="info">
+        <div class="row">
+          <div class="label">LinkedIn</div>
+          <div class="value">
+            <a href="https://www.linkedin.com/in/puliafitomaurizio/" target="_blank" rel="noopener noreferrer">
+              linkedin.com/in/puliafitomaurizio
+            </a>
+          </div>
+        </div>
 
-<div class="info-box">
+        <div class="row">
+          <div class="label">Location</div>
+          <div class="value">Genoa - Italy</div>
+        </div>
+      </div>
+    </section>
 
-<div class="row">
-<div class="label">Company</div>
-<div class="value">Fincantieri S.p.A.</div>
-</div>
+    <section class="actions">
+      <a class="btn btn-primary" href="tel:+393421484840">Call</a>
 
-<div class="row">
-<div class="label">Department</div>
-<div class="value">Submarines Functional Design Department</div>
-</div>
+      <a class="btn btn-secondary" href="mailto:maurizio.puliafito@fincantieri.it">Email</a>
 
-<div class="row">
-<div class="label">Phone</div>
-<div class="value">
-<a href="tel:+393421484840">+39 342 148 4840</a>
-</div>
-</div>
+      <a class="btn btn-light" href="https://www.linkedin.com/in/puliafitomaurizio/" target="_blank" rel="noopener noreferrer">
+        LinkedIn
+      </a>
 
-<div class="row">
-<div class="label">Email</div>
-<div class="value">
-<a href="mailto:maurizio.puliafito@fincantieri.it">
-maurizio.puliafito@fincantieri.it
-</a>
-</div>
-</div>
+      <a
+        class="btn btn-light"
+        href="data:text/vcard;charset=utf-8,BEGIN%3AVCARD%0AVERSION%3A3.0%0AN%3APuliafito%3BMaurizio%3B%3B%3B%0AFN%3AMaurizio%20Puliafito%0AORG%3AFincantieri%20S.p.A.%0AITEM1.X-ABLabel%3ACompany%0AITEM1.X-ABADR%3Ait%0ATITLE%3AHead%20of%20Weapon%20Systems%20%26%20Underwater%20Sensors%0AROLE%3ASubmarines%20Functional%20Design%20Department%0ATEL%3BTYPE%3DCELL%2CVOICE%3A%2B39%20342%20148%204840%0AEMAIL%3BTYPE%3DINTERNET%2CWORK%3Amaurizio.puliafito%40fincantieri.it%0AADR%3BTYPE%3DWORK%3A%3B%3BFincantieri%20S.p.A.%2C%20Via%20Cipro%2011%3BGenoa%3B%3BItaly%0AURL%3BTYPE%3DLinkedIn%3Ahttps%3A%2F%2Fwww.linkedin.com%2Fin%2Fpuliafitomaurizio%2F%0ANOTE%3ASubmarines%20Functional%20Design%20Department%0AEND%3AVCARD"
+        download="Maurizio_Puliafito.vcf"
+      >
+        Save Contact
+      </a>
+    </section>
 
-<div class="row">
-<div class="label">LinkedIn</div>
-<div class="value">
-<a href="https://www.linkedin.com/in/puliafitomaurizio/" target="_blank">
-linkedin.com/in/puliafitomaurizio
-</a>
-</div>
-</div>
+    <section class="qr-section">
+      <div class="qr-box">
+        <p class="qr-title">Scan to open my digital business card</p>
+        <p class="qr-subtitle">
+          Use this QR code to open and share this page instantly.
+        </p>
 
-<div class="row">
-<div class="label">Location</div>
-<div class="value">Genoa - Italy</div>
-</div>
+        <img
+          src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https%3A%2F%2Fmauriziopuliafito.github.io"
+          alt="QR code for Maurizio Puliafito digital business card"
+        >
 
-</div>
+        <div class="site-link">
+          <a href="https://mauriziopuliafito.github.io" target="_blank" rel="noopener noreferrer">
+            mauriziopuliafito.github.io
+          </a>
+        </div>
+      </div>
+    </section>
 
-</section>
-
-<section class="actions">
-
-<a class="btn btn-primary" href="tel:+393421484840">Call</a>
-
-<a class="btn btn-secondary" href="mailto:maurizio.puliafito@fincantieri.it">Email</a>
-
-<a class="btn btn-light" href="https://www.linkedin.com/in/puliafitomaurizio/" target="_blank">
-LinkedIn
-</a>
-
-<a class="btn btn-light"
-href="data:text/vcard;charset=utf-8,BEGIN%3AVCARD%0AVERSION%3A3.0%0AN%3APuliafito%3BMaurizio%3B%3B%3B%0AFN%3AMaurizio%20Puliafito%0AORG%3AFincantieri%20S.p.A.%0ATITLE%3AHead%20of%20Weapon%20Systems%20%26%20Underwater%20Sensors%0ATEL%3BTYPE%3DCELL%3A%2B39%20342%20148%204840%0AEMAIL%3Amaurizio.puliafito%40fincantieri.it%0AADR%3BTYPE%3DWORK%3B%3B%3BVia%20Cipro%2011%3BGenoa%3B%3BItaly%0AURL%3Ahttps%3A%2F%2Fwww.linkedin.com%2Fin%2Fpuliafitomaurizio%2F%0AEND%3AVCARD"
-download="Maurizio_Puliafito.vcf">
-
-Save Contact
-
-</a>
-
-</section>
-
-<div class="footer">
-Fincantieri S.p.A. · Via Cipro 11 · Genoa - Italy
-</div>
-
-</div>
-
+    <div class="footer">
+      Fincantieri S.p.A. · Via Cipro 11 · Genoa - Italy
+    </div>
+  </div>
 </body>
 </html>
