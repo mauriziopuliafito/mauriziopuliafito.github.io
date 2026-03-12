@@ -1,69 +1,282 @@
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
-<title>Maurizio Puliafito</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maurizio Puliafito</title>
+  <meta name="description" content="Digital business card - Maurizio Puliafito" />
+  <style>
+    :root{
+      --bg: #eef3f8;
+      --card: #ffffff;
+      --primary: #003b6f;
+      --primary-2: #005792;
+      --accent: #0b84d8;
+      --text: #102033;
+      --muted: #5c6b7a;
+      --line: #d9e2ec;
+      --shadow: 0 14px 40px rgba(8, 34, 63, 0.12);
+      --radius: 20px;
+    }
 
-<style>
+    *{
+      box-sizing: border-box;
+    }
 
-body{
-font-family: Arial;
-background:#f4f4f4;
-text-align:center;
-margin-top:80px;
-}
+    body{
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        linear-gradient(135deg, rgba(0,59,111,0.10), rgba(11,132,216,0.04)),
+        var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
 
-.card{
-background:white;
-width:320px;
-margin:auto;
-padding:30px;
-border-radius:12px;
-box-shadow:0 5px 20px rgba(0,0,0,0.1);
-}
+    .card{
+      width: 100%;
+      max-width: 560px;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 1px solid rgba(0,59,111,0.08);
+    }
 
-h1{
-margin-bottom:5px;
-}
+    .topbar{
+      height: 10px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+    }
 
-p{
-color:#666;
-margin-bottom:20px;
-}
+    .hero{
+      padding: 34px 30px 24px;
+      background:
+        linear-gradient(180deg, rgba(0,59,111,0.03), rgba(255,255,255,0));
+    }
 
-a{
-display:block;
-padding:12px;
-margin:10px;
-background:#0077b5;
-color:white;
-text-decoration:none;
-border-radius:6px;
-}
+    .eyebrow{
+      font-size: 12px;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: var(--primary-2);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
 
-.phone{
-background:#2ecc71;
-}
+    h1{
+      margin: 0;
+      font-size: 36px;
+      line-height: 1.1;
+      color: var(--primary);
+    }
 
-.mail{
-background:#444;
-}
+    .role{
+      margin-top: 10px;
+      font-size: 20px;
+      line-height: 1.35;
+      font-weight: 600;
+      color: var(--text);
+    }
 
-</style>
+    .description{
+      margin-top: 14px;
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--muted);
+    }
+
+    .info{
+      padding: 0 30px 8px;
+    }
+
+    .info-box{
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 18px 18px 8px;
+      background: #fbfdff;
+    }
+
+    .row{
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .row:last-child{
+      border-bottom: none;
+    }
+
+    .label{
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--primary-2);
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+    }
+
+    .value{
+      font-size: 16px;
+      line-height: 1.5;
+      color: var(--text);
+      word-break: break-word;
+    }
+
+    .value a{
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .actions{
+      padding: 22px 30px 30px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .btn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 700;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+      text-align: center;
+    }
+
+    .btn:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(0,59,111,0.14);
+    }
+
+    .btn-primary{
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-secondary{
+      background: #0f6fb8;
+      color: white;
+    }
+
+    .btn-light{
+      background: white;
+      color: var(--primary);
+      border: 1px solid var(--line);
+    }
+
+    .btn-full{
+      grid-column: 1 / -1;
+    }
+
+    .footer{
+      padding: 0 30px 28px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    @media (max-width: 640px){
+      h1{
+        font-size: 30px;
+      }
+
+      .role{
+        font-size: 18px;
+      }
+
+      .row{
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+
+      .actions{
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <main class="card">
+    <div class="topbar"></div>
 
-<div class="card">
+    <section class="hero">
+      <div class="eyebrow">Digital Business Card</div>
+      <h1>Maurizio Puliafito</h1>
+      <div class="role">Head of Weapon Systems &amp; Underwater Sensors</div>
+      <div class="description">
+        Strategic and technical leadership in weapon systems and underwater sensors,
+        with focus on integration, operational effectiveness and naval capability development.
+      </div>
+    </section>
 
-<h1>Maurizio Puliafito</h1>
-<p>Weapon System and Submarine Sensors</p>
+    <section class="info">
+      <div class="info-box">
+        <div class="row">
+          <div class="label">Phone</div>
+          <div class="value">
+            <a href="tel:+393421484840">+39 342 148 4840</a>
+          </div>
+        </div>
 
-<a class="phone" href="tel:+39 3421484840">📞 Call</a>
-<a class="mail" href="maurizio.puliafito@fincantieri.it">✉ Email</a>
-<a href="https://linkedin.com/in/puliafitomaurizio</a>
+        <div class="row">
+          <div class="label">Email</div>
+          <div class="value">
+            <a href="mailto:maurizio.puliafito@fincantieri.it">maurizio.puliafito@fincantieri.it</a>
+          </div>
+        </div>
 
-</div>
+        <div class="row">
+          <div class="label">LinkedIn</div>
+          <div class="value">
+            <a href="https://www.linkedin.com/in/puliafitomaurizio/" target="_blank" rel="noopener noreferrer">
+              linkedin.com/in/puliafitomaurizio
+            </a>
+          </div>
+        </div>
 
+        <div class="row">
+          <div class="label">Location</div>
+          <div class="value">Genoa - Italy</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="actions">
+      <a class="btn btn-primary" href="tel:+393421484840">Call</a>
+      <a class="btn btn-secondary" href="mailto:maurizio.puliafito@fincantieri.it">Email</a>
+
+      <a
+        class="btn btn-light"
+        href="https://www.linkedin.com/in/puliafitomaurizio/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        LinkedIn
+      </a>
+
+      <a
+        class="btn btn-light"
+        href="data:text/vcard;charset=utf-8,BEGIN%3AVCARD%0AVERSION%3A3.0%0AN%3APuliafito%3BMaurizio%3B%3B%3B%0AFN%3AMaurizio%20Puliafito%0AORG%3AFincantieri%0ATITLE%3AHead%20of%20Weapon%20Systems%20%26%20Underwater%20Sensors%0ATEL%3BTYPE%3DCELL%3A%2B39%20342%20148%204840%0AEMAIL%3BTYPE%3DWORK%3Amaurizio.puliafito%40fincantieri.it%0AADR%3BTYPE%3DWORK%3B%3B%3BGenoa%3B%3B%3BItaly%0AURL%3Ahttps%3A%2F%2Fwww.linkedin.com%2Fin%2Fpuliafitomaurizio%2F%0AEND%3AVCARD"
+        download="Maurizio_Puliafito.vcf"
+      >
+        Save Contact
+      </a>
+    </section>
+
+    <div class="footer">
+      Fincantieri-inspired visual style · Clean, responsive, QR-ready
+    </div>
+  </main>
 </body>
 </html>
