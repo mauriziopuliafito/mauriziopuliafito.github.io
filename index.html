@@ -18,17 +18,20 @@
 
   <style>
     :root{
-      --navy:#001f3f;
-      --blue:#003b6f;
-      --blue-2:#005b9f;
-      --cyan:#00a3e0;
-      --ice:#f3f8fc;
+      --navy:#001b36;
+      --navy-2:#002b55;
+      --blue:#004b8d;
+      --blue-2:#0067b1;
+      --cyan:#00a9e0;
+      --cyan-soft:rgba(0,169,224,0.18);
       --white:#ffffff;
-      --text:#102033;
-      --muted:#5f7082;
-      --line:#d7e4ef;
-      --shadow:0 24px 60px rgba(0,31,63,0.18);
-      --radius:24px;
+      --text:#eaf6ff;
+      --muted:#a9c3d9;
+      --line:rgba(255,255,255,0.14);
+      --glass:rgba(255,255,255,0.07);
+      --glass-2:rgba(255,255,255,0.11);
+      --shadow:0 26px 70px rgba(0,0,0,0.38);
+      --radius:26px;
     }
 
     *{
@@ -41,8 +44,9 @@
       font-family:Arial, Helvetica, sans-serif;
       color:var(--text);
       background:
-        radial-gradient(circle at top left, rgba(0,163,224,0.18), transparent 34%),
-        linear-gradient(135deg, #edf5fb 0%, #f8fbfd 45%, #e7f1f8 100%);
+        radial-gradient(circle at 18% 12%, rgba(0,169,224,0.32), transparent 28%),
+        radial-gradient(circle at 88% 18%, rgba(0,103,177,0.28), transparent 30%),
+        linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 48%, #001326 100%);
       display:flex;
       align-items:center;
       justify-content:center;
@@ -52,146 +56,116 @@
     .page{
       width:100%;
       max-width:760px;
-      position:relative;
     }
 
     .card{
-      background:var(--white);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
+      position:relative;
       overflow:hidden;
-      border:1px solid rgba(0,59,111,0.10);
+      border-radius:var(--radius);
+      border:1px solid var(--line);
+      background:
+        linear-gradient(145deg, rgba(0,75,141,0.50), rgba(0,27,54,0.96)),
+        linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(12px);
+    }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px);
+      background-size:34px 34px;
+      mask-image:linear-gradient(to bottom, rgba(0,0,0,0.7), transparent 78%);
+      pointer-events:none;
+    }
+
+    .card::after{
+      content:"";
+      position:absolute;
+      right:-130px;
+      top:-130px;
+      width:330px;
+      height:330px;
+      border-radius:50%;
+      border:1px solid rgba(0,169,224,0.30);
+      box-shadow:0 0 90px rgba(0,169,224,0.18);
+      pointer-events:none;
+    }
+
+    .masthead,
+    .content{
+      position:relative;
+      z-index:1;
     }
 
     .masthead{
-      position:relative;
-      padding:34px 34px 30px;
-      color:var(--white);
-      background:
-        linear-gradient(135deg, rgba(0,31,63,0.98), rgba(0,59,111,0.94) 58%, rgba(0,91,159,0.92)),
-        radial-gradient(circle at top right, rgba(0,163,224,0.45), transparent 36%);
-      overflow:hidden;
-    }
-
-    .masthead::after{
-      content:"";
-      position:absolute;
-      right:-80px;
-      bottom:-95px;
-      width:270px;
-      height:270px;
-      border:1px solid rgba(255,255,255,0.16);
-      border-radius:50%;
-    }
-
-    .masthead::before{
-      content:"";
-      position:absolute;
-      right:36px;
-      top:34px;
-      width:150px;
-      height:2px;
-      background:linear-gradient(90deg, transparent, var(--cyan));
-      opacity:0.85;
+      padding:36px 36px 30px;
+      border-bottom:1px solid var(--line);
     }
 
     .brand-line{
-      position:relative;
-      z-index:1;
       display:flex;
-      align-items:center;
       justify-content:space-between;
+      align-items:center;
       gap:16px;
-      margin-bottom:30px;
+      margin-bottom:34px;
     }
 
     .brand{
       font-size:13px;
-      font-weight:800;
-      letter-spacing:2.4px;
+      font-weight:900;
+      letter-spacing:2.6px;
       text-transform:uppercase;
-    }
-
-    .brand span{
-      color:var(--cyan);
+      color:var(--white);
     }
 
     .tag{
       font-size:11px;
-      letter-spacing:1.8px;
+      letter-spacing:2px;
       text-transform:uppercase;
-      color:rgba(255,255,255,0.78);
+      color:var(--cyan);
+      font-weight:800;
       white-space:nowrap;
-    }
-
-    .identity{
-      position:relative;
-      z-index:1;
     }
 
     .eyebrow{
       margin:0 0 12px;
       color:var(--cyan);
       font-size:12px;
-      font-weight:800;
+      font-weight:900;
       letter-spacing:2px;
       text-transform:uppercase;
     }
 
     h1{
       margin:0;
-      font-size:42px;
+      font-size:44px;
       line-height:1.04;
       letter-spacing:-0.8px;
+      color:var(--white);
     }
 
     .role{
-      margin-top:14px;
-      max-width:610px;
+      margin-top:15px;
+      max-width:650px;
       font-size:21px;
       line-height:1.35;
       font-weight:700;
-      color:rgba(255,255,255,0.94);
-    }
-
-    .description{
-      margin-top:16px;
-      max-width:620px;
-      font-size:15px;
-      line-height:1.65;
-      color:rgba(255,255,255,0.78);
-    }
-
-    .badges{
-      position:relative;
-      z-index:1;
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:24px;
-    }
-
-    .badge{
-      border:1px solid rgba(255,255,255,0.22);
-      color:rgba(255,255,255,0.88);
-      background:rgba(255,255,255,0.07);
-      padding:8px 11px;
-      border-radius:999px;
-      font-size:11px;
-      font-weight:800;
-      letter-spacing:1.2px;
-      text-transform:uppercase;
+      color:#dceeff;
     }
 
     .content{
-      padding:30px 34px 34px;
+      padding:30px 36px 34px;
     }
 
     .info-box{
       border:1px solid var(--line);
-      border-radius:18px;
+      border-radius:20px;
       overflow:hidden;
-      background:#fbfdff;
+      background:rgba(255,255,255,0.06);
     }
 
     .row{
@@ -207,7 +181,7 @@
     }
 
     .label{
-      color:var(--blue-2);
+      color:var(--cyan);
       font-size:12px;
       font-weight:900;
       letter-spacing:1.2px;
@@ -217,11 +191,12 @@
     .value{
       font-size:16px;
       line-height:1.5;
+      color:var(--text);
       word-break:break-word;
     }
 
     .value a{
-      color:var(--blue);
+      color:var(--white);
       text-decoration:none;
       font-weight:700;
     }
@@ -243,7 +218,7 @@
       align-items:center;
       justify-content:center;
       padding:14px 16px;
-      border-radius:14px;
+      border-radius:15px;
       text-decoration:none;
       font-size:15px;
       font-weight:900;
@@ -253,28 +228,29 @@
 
     .btn:hover{
       transform:translateY(-1px);
-      box-shadow:0 12px 28px rgba(0,59,111,0.15);
+      box-shadow:0 14px 34px rgba(0,0,0,0.25);
     }
 
     .btn-primary{
-      background:var(--blue);
-      color:var(--white);
-    }
-
-    .btn-secondary{
       background:var(--cyan);
       color:var(--navy);
     }
 
+    .btn-secondary{
+      background:var(--blue-2);
+      color:var(--white);
+    }
+
     .btn-light{
-      color:var(--blue);
-      background:var(--white);
+      color:var(--white);
+      background:var(--glass);
       border:1px solid var(--line);
     }
 
     .btn-dark{
-      background:var(--navy);
+      background:rgba(0,0,0,0.24);
       color:var(--white);
+      border:1px solid rgba(0,169,224,0.32);
     }
 
     .btn:focus-visible,
@@ -287,20 +263,18 @@
     .qr-panel{
       margin-top:24px;
       display:grid;
-      grid-template-columns:1fr 180px;
+      grid-template-columns:1fr 178px;
       gap:20px;
       align-items:center;
       border:1px solid var(--line);
-      border-radius:18px;
+      border-radius:20px;
       padding:20px;
-      background:
-        linear-gradient(135deg, rgba(0,59,111,0.04), rgba(0,163,224,0.03)),
-        #fbfdff;
+      background:rgba(255,255,255,0.06);
     }
 
     .qr-copy h2{
       margin:0;
-      color:var(--blue);
+      color:var(--white);
       font-size:18px;
       line-height:1.3;
     }
@@ -312,6 +286,18 @@
       line-height:1.55;
     }
 
+    .site-link{
+      margin-top:13px;
+      font-size:13px;
+      word-break:break-all;
+    }
+
+    .site-link a{
+      color:var(--cyan);
+      text-decoration:none;
+      font-weight:800;
+    }
+
     .qr-image{
       display:flex;
       justify-content:center;
@@ -320,22 +306,11 @@
     .qr-image img{
       width:158px;
       height:158px;
-      border-radius:14px;
+      border-radius:16px;
       background:var(--white);
       padding:10px;
-      border:1px solid var(--line);
-    }
-
-    .site-link{
-      margin-top:12px;
-      font-size:13px;
-      word-break:break-all;
-    }
-
-    .site-link a{
-      color:var(--blue);
-      text-decoration:none;
-      font-weight:800;
+      border:1px solid rgba(255,255,255,0.30);
+      box-shadow:0 12px 30px rgba(0,0,0,0.22);
     }
 
     .footer{
@@ -345,11 +320,20 @@
       text-align:center;
       color:var(--muted);
       font-size:13px;
-      line-height:1.5;
+      line-height:1.6;
     }
 
     .footer strong{
-      color:var(--blue);
+      color:var(--white);
+    }
+
+    .designer{
+      margin-top:8px;
+      color:var(--cyan);
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:1px;
+      text-transform:uppercase;
     }
 
     @media(max-width:680px){
@@ -363,10 +347,10 @@
       }
 
       .brand-line{
-        align-items:flex-start;
         flex-direction:column;
+        align-items:flex-start;
         gap:8px;
-        margin-bottom:26px;
+        margin-bottom:28px;
       }
 
       h1{
@@ -407,10 +391,6 @@
         padding-left:20px;
         padding-right:20px;
       }
-
-      .badge{
-        font-size:10px;
-      }
     }
   </style>
 </head>
@@ -421,7 +401,7 @@
 
       <header class="masthead">
         <div class="brand-line">
-          <div class="brand">FINCANTIERI <span></div>
+          <div class="brand">FINCANTIERI</div>
           <div class="tag">Future on board</div>
         </div>
 
@@ -433,10 +413,11 @@
           <div class="role">
             Head of Weapon Systems &amp; Underwater Sensors
           </div>
-
-           </header>
+        </div>
+      </header>
 
       <section class="content">
+
         <section class="info" aria-label="Contact information">
           <div class="info-box">
 
@@ -530,7 +511,9 @@
 
         <footer class="footer">
           <strong>Fincantieri S.p.A.</strong> · Via Cipro 11 · Genoa - Italy
+          <div class="designer">Design by Maurizio Puliafito</div>
         </footer>
+
       </section>
 
     </article>
