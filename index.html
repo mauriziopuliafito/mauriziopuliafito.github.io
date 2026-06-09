@@ -3,518 +3,617 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+  <meta name="theme-color" content="#000d1a" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <title>Maurizio Puliafito | Digital Business Card</title>
-
-  <meta
-    name="description"
-    content="Digital business card of Maurizio Puliafito, Head of Weapon Systems & Underwater Sensors at Fincantieri S.p.A."
-  />
-
+  <meta name="description" content="Digital business card of Maurizio Puliafito, Head of Weapon Systems & Underwater Sensors at Fincantieri S.p.A." />
   <meta property="og:title" content="Maurizio Puliafito | Digital Business Card" />
-  <meta property="og:description" content="Head of Weapon Systems & Underwater Sensors - Fincantieri S.p.A." />
+  <meta property="og:description" content="Head of Weapon Systems & Underwater Sensors — Fincantieri S.p.A." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://mauriziopuliafito.github.io/" />
-
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --navy:#001b36;
-      --navy-2:#002b55;
-      --blue:#004b8d;
-      --blue-2:#0067b1;
-      --cyan:#00a9e0;
-      --cyan-soft:rgba(0,169,224,0.18);
-      --white:#ffffff;
-      --text:#eaf6ff;
-      --muted:#a9c3d9;
-      --line:rgba(255,255,255,0.14);
-      --glass:rgba(255,255,255,0.07);
-      --glass-2:rgba(255,255,255,0.11);
-      --shadow:0 26px 70px rgba(0,0,0,0.38);
-      --radius:26px;
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #000d1a;
+      --navy2:   #001428;
+      --steel:   #0a2340;
+      --accent:  #00d4ff;
+      --accent2: #0098c7;
+      --dim:     #003d66;
+      --text:    #d0e8f5;
+      --muted:   #4a7a9b;
+      --white:   #ffffff;
+      --line:    rgba(0,212,255,0.12);
+      --line2:   rgba(0,212,255,0.22);
+      --touch:   48px;
     }
 
-    *{
-      box-sizing:border-box;
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
     }
 
-    body{
-      margin:0;
-      min-height:100vh;
-      font-family:Arial, Helvetica, sans-serif;
-      color:var(--text);
+    body {
+      min-height: 100vh;
+      min-height: 100dvh;
       background:
-        radial-gradient(circle at 18% 12%, rgba(0,169,224,0.32), transparent 28%),
-        radial-gradient(circle at 88% 18%, rgba(0,103,177,0.28), transparent 30%),
-        linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 48%, #001326 100%);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:28px;
+        radial-gradient(circle at 15% 10%, rgba(0,169,224,0.18) 0%, transparent 30%),
+        radial-gradient(circle at 85% 20%, rgba(0,75,141,0.22) 0%, transparent 30%),
+        linear-gradient(160deg, #000d1a 0%, #001428 55%, #000a14 100%);
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: env(safe-area-inset-top, 20px) env(safe-area-inset-right, 16px) env(safe-area-inset-bottom, 24px) env(safe-area-inset-left, 16px);
+      padding-top: max(env(safe-area-inset-top, 0px), 20px);
+      padding-bottom: max(env(safe-area-inset-bottom, 0px), 24px);
+      font-family: 'Space Grotesk', Arial, sans-serif;
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
     }
 
-    .page{
-      width:100%;
-      max-width:760px;
+    .page {
+      width: 100%;
+      max-width: 660px;
     }
 
-    .card{
-      position:relative;
-      overflow:hidden;
-      border-radius:var(--radius);
-      border:1px solid var(--line);
-      background:
-        linear-gradient(145deg, rgba(0,75,141,0.50), rgba(0,27,54,0.96)),
-        linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
-      box-shadow:var(--shadow);
-      backdrop-filter:blur(12px);
+    /* ── Card ── */
+    .card {
+      position: relative;
+      background: var(--navy2);
+      border: 1px solid var(--line2);
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.55);
+      animation: fadeUp 0.45s ease both;
     }
 
-    .card::before{
-      content:"";
-      position:absolute;
-      inset:0;
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Left accent bar */
+    .card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, transparent 0%, var(--accent) 25%, var(--accent2) 65%, transparent 100%);
+      opacity: 0.75;
+      z-index: 2;
+    }
+
+    /* Sonar rings — hidden on small screens, decorative only */
+    .sonar {
+      position: absolute;
+      right: -90px; top: -90px;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .sonar span {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(0,212,255,0.09);
+    }
+    .sonar span:nth-child(1) { width: 240px; height: 240px; right: 0;   top: 0;  }
+    .sonar span:nth-child(2) { width: 170px; height: 170px; right: 35px; top: 35px; border-color: rgba(0,212,255,0.13); }
+    .sonar span:nth-child(3) { width: 100px; height: 100px; right: 70px; top: 70px; border-color: rgba(0,212,255,0.18); }
+
+    /* Grid texture */
+    .card-bg {
+      position: absolute;
+      inset: 0;
       background-image:
-        linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px);
-      background-size:34px 34px;
-      mask-image:linear-gradient(to bottom, rgba(0,0,0,0.7), transparent 78%);
-      pointer-events:none;
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent 60%);
+      -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent 60%);
+      pointer-events: none;
+      z-index: 0;
     }
 
-    .card::after{
-      content:"";
-      position:absolute;
-      right:-130px;
-      top:-130px;
-      width:330px;
-      height:330px;
-      border-radius:50%;
-      border:1px solid rgba(0,169,224,0.30);
-      box-shadow:0 0 90px rgba(0,169,224,0.18);
-      pointer-events:none;
+    /* ── Masthead ── */
+    .masthead {
+      position: relative;
+      z-index: 1;
+      padding: 28px 24px 24px 30px;
+      border-bottom: 1px solid var(--line);
     }
 
-    .masthead,
-    .content{
-      position:relative;
-      z-index:1;
+    .company-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 22px;
     }
 
-    .masthead{
-      padding:36px 36px 30px;
-      border-bottom:1px solid var(--line);
+    .company {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
     }
 
-    .brand-line{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:16px;
-      margin-bottom:34px;
+    .badge {
+      font-family: 'Space Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--line2);
+      padding: 4px 10px;
+      border-radius: 5px;
+      background: rgba(0,212,255,0.05);
+      white-space: nowrap;
     }
 
-    .brand{
-      font-size:13px;
-      font-weight:900;
-      letter-spacing:2.6px;
-      text-transform:uppercase;
-      color:var(--white);
+    h1 {
+      font-size: clamp(28px, 8vw, 40px);
+      font-weight: 700;
+      letter-spacing: -0.6px;
+      color: var(--white);
+      line-height: 1.05;
+      margin-bottom: 10px;
     }
 
-    .tag{
-      font-size:11px;
-      letter-spacing:2px;
-      text-transform:uppercase;
-      color:var(--cyan);
-      font-weight:800;
-      white-space:nowrap;
+    .role {
+      font-size: clamp(14px, 3.8vw, 16px);
+      font-weight: 500;
+      color: var(--text);
+      line-height: 1.45;
     }
 
-    .eyebrow{
-      margin:0 0 12px;
-      color:var(--cyan);
-      font-size:12px;
-      font-weight:900;
-      letter-spacing:2px;
-      text-transform:uppercase;
+    .dept {
+      margin-top: 6px;
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0.3px;
+      line-height: 1.5;
     }
 
-    h1{
-      margin:0;
-      font-size:44px;
-      line-height:1.04;
-      letter-spacing:-0.8px;
-      color:var(--white);
+    /* ── Content ── */
+    .content {
+      position: relative;
+      z-index: 1;
+      padding: 22px 24px 28px 30px;
     }
 
-    .role{
-      margin-top:15px;
-      max-width:650px;
-      font-size:21px;
-      line-height:1.35;
-      font-weight:700;
-      color:#dceeff;
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .section-label span {
+      font-family: 'Space Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--line);
     }
 
-    .content{
-      padding:30px 36px 34px;
+    /* ── Contact grid ── */
+    .contacts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 20px;
     }
 
-    .info-box{
-      border:1px solid var(--line);
-      border-radius:20px;
-      overflow:hidden;
-      background:rgba(255,255,255,0.06);
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      min-height: var(--touch);
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: rgba(0,212,255,0.03);
+      text-decoration: none;
+      -webkit-tap-highlight-color: transparent;
+      transition: border-color 0.15s, background 0.15s;
     }
-
-    .row{
-      display:grid;
-      grid-template-columns:150px 1fr;
-      gap:16px;
-      padding:15px 18px;
-      border-bottom:1px solid var(--line);
+    .contact-item:active {
+      background: rgba(0,212,255,0.09);
+      border-color: var(--line2);
     }
-
-    .row:last-child{
-      border-bottom:none;
-    }
-
-    .label{
-      color:var(--cyan);
-      font-size:12px;
-      font-weight:900;
-      letter-spacing:1.2px;
-      text-transform:uppercase;
-    }
-
-    .value{
-      font-size:16px;
-      line-height:1.5;
-      color:var(--text);
-      word-break:break-word;
-    }
-
-    .value a{
-      color:var(--white);
-      text-decoration:none;
-      font-weight:700;
-    }
-
-    .value a:hover{
-      color:var(--cyan);
-    }
-
-    .actions{
-      margin-top:24px;
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:12px;
-    }
-
-    .btn{
-      min-height:54px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:14px 16px;
-      border-radius:15px;
-      text-decoration:none;
-      font-size:15px;
-      font-weight:900;
-      letter-spacing:0.2px;
-      transition:transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
-    }
-
-    .btn:hover{
-      transform:translateY(-1px);
-      box-shadow:0 14px 34px rgba(0,0,0,0.25);
-    }
-
-    .btn-primary{
-      background:var(--cyan);
-      color:var(--navy);
-    }
-
-    .btn-secondary{
-      background:var(--blue-2);
-      color:var(--white);
-    }
-
-    .btn-light{
-      color:var(--white);
-      background:var(--glass);
-      border:1px solid var(--line);
-    }
-
-    .btn-dark{
-      background:rgba(0,0,0,0.24);
-      color:var(--white);
-      border:1px solid rgba(0,169,224,0.32);
-    }
-
-    .btn:focus-visible,
-    .value a:focus-visible,
-    .site-link a:focus-visible{
-      outline:3px solid var(--cyan);
-      outline-offset:3px;
-    }
-
-    .qr-panel{
-      margin-top:24px;
-      display:grid;
-      grid-template-columns:1fr 178px;
-      gap:20px;
-      align-items:center;
-      border:1px solid var(--line);
-      border-radius:20px;
-      padding:20px;
-      background:rgba(255,255,255,0.06);
-    }
-
-    .qr-copy h2{
-      margin:0;
-      color:var(--white);
-      font-size:18px;
-      line-height:1.3;
-    }
-
-    .qr-copy p{
-      margin:8px 0 0;
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.55;
-    }
-
-    .site-link{
-      margin-top:13px;
-      font-size:13px;
-      word-break:break-all;
-    }
-
-    .site-link a{
-      color:var(--cyan);
-      text-decoration:none;
-      font-weight:800;
-    }
-
-    .qr-image{
-      display:flex;
-      justify-content:center;
-    }
-
-    .qr-image img{
-      width:158px;
-      height:158px;
-      border-radius:16px;
-      background:var(--white);
-      padding:10px;
-      border:1px solid rgba(255,255,255,0.30);
-      box-shadow:0 12px 30px rgba(0,0,0,0.22);
-    }
-
-    .footer{
-      margin-top:24px;
-      padding-top:18px;
-      border-top:1px solid var(--line);
-      text-align:center;
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.6;
-    }
-
-    .footer strong{
-      color:var(--white);
-    }
-
-    .designer{
-      margin-top:8px;
-      color:var(--cyan);
-      font-size:12px;
-      font-weight:800;
-      letter-spacing:1px;
-      text-transform:uppercase;
-    }
-
-    @media(max-width:680px){
-      body{
-        padding:18px;
-        align-items:flex-start;
-      }
-
-      .masthead{
-        padding:30px 24px 26px;
-      }
-
-      .brand-line{
-        flex-direction:column;
-        align-items:flex-start;
-        gap:8px;
-        margin-bottom:28px;
-      }
-
-      h1{
-        font-size:34px;
-      }
-
-      .role{
-        font-size:18px;
-      }
-
-      .content{
-        padding:24px;
-      }
-
-      .row{
-        grid-template-columns:1fr;
-        gap:5px;
-        padding:14px 15px;
-      }
-
-      .actions{
-        grid-template-columns:1fr;
-      }
-
-      .qr-panel{
-        grid-template-columns:1fr;
-        text-align:center;
+    @media (hover: hover) {
+      .contact-item:hover {
+        border-color: var(--line2);
+        background: rgba(0,212,255,0.07);
       }
     }
+    .contact-item:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    .contact-item.no-link { cursor: default; }
 
-    @media(max-width:420px){
-      h1{
-        font-size:30px;
+    .ci-icon {
+      width: 32px; height: 32px;
+      border-radius: 8px;
+      background: rgba(0,212,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .ci-icon svg {
+      width: 15px; height: 15px;
+      stroke: var(--accent);
+      fill: none;
+      stroke-width: 1.75;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .ci-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2px;
+    }
+    .ci-value {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+      line-height: 1.3;
+      word-break: break-word;
+    }
+
+    /* ── Action buttons ── */
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      min-height: var(--touch);
+      padding: 12px 8px;
+      border-radius: 12px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 0.1px;
+      border: none;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      transition: opacity 0.12s, transform 0.12s;
+      touch-action: manipulation;
+    }
+    .btn:active { opacity: 0.8; transform: scale(0.97); }
+    @media (hover: hover) {
+      .btn:hover { transform: translateY(-1px); box-shadow: 0 8px 22px rgba(0,0,0,0.28); }
+    }
+    .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .btn svg {
+      width: 16px; height: 16px;
+      stroke: currentColor; fill: none;
+      stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+      flex-shrink: 0;
+    }
+
+    .btn-call  { background: var(--accent); color: var(--navy); }
+    .btn-email { background: var(--dim); color: var(--accent); border: 1px solid var(--line2); }
+    .btn-save  { background: var(--steel); color: var(--text); border: 1px solid var(--line); }
+
+    /* ── QR panel — hidden on mobile (useless to scan your own phone) ── */
+    .qr-panel {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 18px;
+      align-items: center;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(0,212,255,0.025);
+    }
+
+    .qr-frame {
+      width: 90px; height: 90px;
+      flex-shrink: 0;
+      background: var(--white);
+      border-radius: 10px;
+      padding: 5px;
+      border: 1px solid rgba(255,255,255,0.22);
+      box-shadow: 0 8px 22px rgba(0,0,0,0.3);
+    }
+    .qr-frame img {
+      width: 100%; height: 100%;
+      display: block;
+      border-radius: 5px;
+    }
+
+    .qr-body h3 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .qr-body p {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .qr-body a {
+      display: inline-block;
+      margin-top: 6px;
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* ── Footer ── */
+    .footer-sig {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .depth-dots { display: flex; align-items: center; gap: 4px; }
+    .depth-dots span {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0.25;
+    }
+    .depth-dots span.on { opacity: 1; }
+    .footer-loc {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 1.2px;
+    }
+    .footer-url {
+      margin-left: auto;
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.4px;
+    }
+
+    /* ═══════════════════════════════════════════
+       MOBILE — primary target: 375–430px
+    ═══════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      body {
+        align-items: flex-start;
+        padding-left: 12px;
+        padding-right: 12px;
       }
 
-      .masthead,
-      .content{
-        padding-left:20px;
-        padding-right:20px;
+      /* Card takes full width, no rounded corners on sides that touch edge */
+      .card {
+        border-radius: 18px;
       }
+
+      .masthead {
+        padding: 22px 18px 20px 22px;
+      }
+
+      .content {
+        padding: 18px 18px 24px 22px;
+      }
+
+      .company-row {
+        margin-bottom: 16px;
+      }
+
+      /* Contacts: single column on mobile for easier tapping */
+      .contacts {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+
+      .contact-item {
+        min-height: 52px;
+        padding: 12px 14px;
+        border-radius: 12px;
+      }
+
+      .ci-value {
+        font-size: 14px;
+      }
+
+      /* Buttons: 2-col grid, Save full width at bottom */
+      .actions {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+      .btn-save {
+        grid-column: 1 / -1;
+      }
+      .btn {
+        min-height: 52px;
+        font-size: 15px;
+        border-radius: 13px;
+      }
+
+      /* QR: hide on mobile — nobody scans their own phone */
+      .qr-panel { display: none; }
+
+      .footer-url { display: none; }
+
+      .footer-sig { margin-top: 14px; }
+    }
+
+    /* Very small phones (320px) */
+    @media (max-width: 360px) {
+      body { padding-left: 8px; padding-right: 8px; }
+      .masthead { padding: 18px 14px 16px 18px; }
+      .content  { padding: 16px 14px 20px 18px; }
+      .badge    { display: none; }
+    }
+
+    /* Tablet / desktop — restore desktop layout */
+    @media (min-width: 601px) {
+      body { align-items: center; padding: 32px 20px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .card { animation: none; }
+      .btn, .contact-item { transition: none; }
     }
   </style>
 </head>
-
 <body>
   <main class="page">
-    <article class="card">
+    <article class="card" role="main" aria-label="Digital business card of Maurizio Puliafito">
 
+      <div class="sonar" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
+      <div class="card-bg" aria-hidden="true"></div>
+
+      <!-- Masthead -->
       <header class="masthead">
-        <div class="brand-line">
-          <div class="brand">FINCANTIERI</div>
-          <div class="tag">Future on board</div>
+        <div class="company-row">
+          <div class="company">Fincantieri S.p.A.</div>
+          <div class="badge">Future on board</div>
         </div>
-
-        <div class="identity">
-          <p class="eyebrow">Digital Business Card</p>
-
-          <h1>Maurizio Puliafito</h1>
-
-          <div class="role">
-            Head of Weapon Systems &amp; Underwater Sensors
-          </div>
-        </div>
+        <h1>Maurizio Puliafito</h1>
+        <div class="role">Head of Weapon Systems &amp; Underwater Sensors</div>
+        <div class="dept">Submarines Functional Design Department</div>
       </header>
 
+      <!-- Content -->
       <section class="content">
 
-        <section class="info" aria-label="Contact information">
-          <div class="info-box">
+        <!-- Contact info -->
+        <div class="section-label"><span>Contact</span></div>
+        <div class="contacts">
 
-            <div class="row">
-              <div class="label">Company</div>
-              <div class="value">Fincantieri S.p.A.</div>
+          <a class="contact-item" href="tel:+393421484840" aria-label="Call +39 342 148 4840">
+            <div class="ci-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.11 12 19.79 19.79 0 0 1 1.07 3.44 2 2 0 0 1 3.06 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.19a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16.92z"/></svg>
             </div>
-
-            <div class="row">
-              <div class="label">Department</div>
-              <div class="value">Submarines Functional Design Department</div>
+            <div>
+              <div class="ci-label">Phone</div>
+              <div class="ci-value">+39 342 148 4840</div>
             </div>
-
-            <div class="row">
-              <div class="label">Phone</div>
-              <div class="value">
-                <a href="tel:+393421484840">+39 342 148 4840</a>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="label">Email</div>
-              <div class="value">
-                <a href="mailto:maurizio.puliafito@fincantieri.it">
-                  maurizio.puliafito@fincantieri.it
-                </a>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="label">LinkedIn</div>
-              <div class="value">
-                <a href="https://www.linkedin.com/in/puliafitomaurizio/" target="_blank" rel="noopener noreferrer">
-                  linkedin.com/in/puliafitomaurizio
-                </a>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="label">Location</div>
-              <div class="value">Genoa - Italy</div>
-            </div>
-
-          </div>
-        </section>
-
-        <section class="actions" aria-label="Quick actions">
-          <a class="btn btn-primary" href="tel:+393421484840">Call</a>
-
-          <a class="btn btn-secondary" href="mailto:maurizio.puliafito@fincantieri.it">Email</a>
-
-          <a
-            class="btn btn-light"
-            href="https://www.linkedin.com/in/puliafitomaurizio/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            LinkedIn
           </a>
 
-          <a
-            class="btn btn-dark"
-            href="data:text/vcard;charset=utf-8,BEGIN%3AVCARD%0AVERSION%3A3.0%0AN%3APuliafito%3BMaurizio%3B%3B%3B%0AFN%3AMaurizio%20Puliafito%0AORG%3AFincantieri%20S.p.A.%0ATITLE%3AHead%20of%20Weapon%20Systems%20%26%20Underwater%20Sensors%0AROLE%3ASubmarines%20Functional%20Design%20Department%0ATEL%3BTYPE%3DCELL%2CVOICE%3A%2B39%20342%20148%204840%0AEMAIL%3BTYPE%3DINTERNET%2CWORK%3Amaurizio.puliafito%40fincantieri.it%0AADR%3BTYPE%3DWORK%3A%3B%3BFincantieri%20S.p.A.%2C%20Via%20Cipro%2011%3BGenoa%3B%3BItaly%0AURL%3BTYPE%3DLinkedIn%3Ahttps%3A%2F%2Fwww.linkedin.com%2Fin%2Fpuliafitomaurizio%2F%0ANOTE%3ASubmarines%20Functional%20Design%20Department%0AEND%3AVCARD"
+          <a class="contact-item" href="mailto:maurizio.puliafito@fincantieri.it" aria-label="Email maurizio.puliafito@fincantieri.it">
+            <div class="ci-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+            </div>
+            <div>
+              <div class="ci-label">Email</div>
+              <div class="ci-value">maurizio.puliafito@fincantieri.it</div>
+            </div>
+          </a>
+
+          <a class="contact-item" href="https://www.linkedin.com/in/puliafitomaurizio/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+            <div class="ci-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><line x1="2" y1="9" x2="6" y2="9"/><line x1="4" y1="9" x2="4" y2="21"/><circle cx="4" cy="4" r="2"/></svg>
+            </div>
+            <div>
+              <div class="ci-label">LinkedIn</div>
+              <div class="ci-value">puliafitomaurizio</div>
+            </div>
+          </a>
+
+          <div class="contact-item no-link" aria-label="Location: Genoa, Italy">
+            <div class="ci-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="ci-label">Location</div>
+              <div class="ci-value">Genoa, Italy</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Action buttons -->
+        <div class="section-label"><span>Actions</span></div>
+        <div class="actions">
+
+          <a class="btn btn-call" href="tel:+393421484840" aria-label="Call Maurizio" touch-action="manipulation">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.11 12 19.79 19.79 0 0 1 1.07 3.44 2 2 0 0 1 3.06 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.19a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16.92z"/></svg>
+            Call
+          </a>
+
+          <a class="btn btn-email" href="mailto:maurizio.puliafito@fincantieri.it" aria-label="Email Maurizio">
+            <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+            Email
+          </a>
+
+          <a class="btn btn-save"
+            href="data:text/vcard;charset=utf-8,BEGIN%3AVCARD%0AVERSION%3A3.0%0AN%3APuliafito%3BMaurizio%3B%3B%3B%0AFN%3AMaurizio%20Puliafito%0AORG%3AFincantieri%20S.p.A.%0ATITLE%3AHead%20of%20Weapon%20Systems%20%26%20Underwater%20Sensors%0AROLE%3ASubmarines%20Functional%20Design%20Department%0ATEL%3BTYPE%3DCELL%2CVOICE%3A%2B39%20342%20148%204840%0AEMAIL%3BTYPE%3DINTERNET%2CWORK%3Amaurizio.puliafito%40fincantieri.it%0AADR%3BTYPE%3DWORK%3A%3B%3BFincantieri%20S.p.A.%3BGenoa%3B%3BItaly%0AURL%3BTYPE%3DLinkedIn%3Ahttps%3A%2F%2Fwww.linkedin.com%2Fin%2Fpuliafitomaurizio%2F%0AEND%3AVCARD"
             download="Maurizio_Puliafito.vcf"
-          >
-            Save Contact
+            aria-label="Save contact to phone">
+            <svg viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+            Save
           </a>
-        </section>
 
-        <section class="qr-panel" aria-label="QR code">
-          <div class="qr-copy">
-            <h2>Scan to open my digital business card</h2>
-            <p>
-              Use this QR code to open and share this page instantly from any device.
-            </p>
+        </div>
 
-            <div class="site-link">
-              <a href="https://mauriziopuliafito.github.io" target="_blank" rel="noopener noreferrer">
-                mauriziopuliafito.github.io
-              </a>
-            </div>
-          </div>
-
-          <div class="qr-image">
+        <!-- QR panel (desktop/tablet only — hidden on mobile) -->
+        <div class="section-label"><span>Share</span></div>
+        <div class="qr-panel" aria-label="QR code to share this page">
+          <div class="qr-frame">
             <img
-              src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https%3A%2F%2Fmauriziopuliafito.github.io"
-              alt="QR code for Maurizio Puliafito digital business card"
+              src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&color=000000&bgcolor=FFFFFF&data=https%3A%2F%2Fmauriziopuliafito.github.io"
+              alt="QR code — scan to open mauriziopuliafito.github.io"
+              loading="lazy"
+              width="90"
+              height="90"
             >
           </div>
-        </section>
+          <div class="qr-body">
+            <h3>Digital business card</h3>
+            <p>Scan to open and share this page instantly from any device.</p>
+            <a href="https://mauriziopuliafito.github.io" target="_blank" rel="noopener noreferrer">
+              mauriziopuliafito.github.io
+            </a>
+          </div>
+        </div>
 
-        <footer class="footer">
-          <div class="designer">Design by Maurizio Puliafito</div>
-        </footer>
+        <!-- Footer -->
+        <div class="footer-sig" aria-hidden="true">
+          <div class="depth-dots">
+            <span class="on"></span>
+            <span class="on"></span>
+            <span class="on"></span>
+            <span></span>
+            <span></span>
+          </div>
+          <span class="footer-loc">GENOA · ITALY</span>
+          <a class="footer-url" href="https://mauriziopuliafito.github.io" target="_blank" rel="noopener noreferrer">
+            mauriziopuliafito.github.io
+          </a>
+        </div>
 
       </section>
-
     </article>
   </main>
 </body>
