@@ -1,0 +1,13 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Puliafito;Maurizio;;;
+FN:Maurizio Puliafito
+ORG:Fincantieri S.p.A.
+ROLE:Head of Weapon Systems & Underwater Sensors
+TEL;TYPE=CELL,VOICE:+39 342 148 4840
+EMAIL;TYPE=INTERNET,WORK:maurizio.puliafito@fincantieri.it
+ADR;TYPE=WORK:;;Fincantieri S.p.A.;Genoa;;Italy
+URL:https://mauriziopuliafito.github.io/
+URL;TYPE=LinkedIn:https://www.linkedin.com/in/puliafitomaurizio/
+NOTE:Submarines Functional Design Department
+END:VCARD
