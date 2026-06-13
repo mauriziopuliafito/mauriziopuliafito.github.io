@@ -1,20 +1,33 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <meta name="theme-color" content="#000d1a" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
   <title>Maurizio Puliafito | Digital Business Card</title>
+
   <meta name="description" content="Digital business card of Maurizio Puliafito, Head of Weapon Systems & Underwater Sensors at Fincantieri S.p.A." />
+
   <meta property="og:title" content="Maurizio Puliafito | Digital Business Card" />
   <meta property="og:description" content="Head of Weapon Systems & Underwater Sensors — Fincantieri S.p.A." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://mauriziopuliafito.github.io/" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     :root {
       --navy:    #000d1a;
@@ -59,7 +72,6 @@
       max-width: 660px;
     }
 
-    /* ── Card ── */
     .card {
       position: relative;
       background: var(--navy2);
@@ -71,38 +83,66 @@
     }
 
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(12px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    /* Left accent bar */
     .card::before {
       content: '';
       position: absolute;
-      left: 0; top: 0; bottom: 0;
+      left: 0;
+      top: 0;
+      bottom: 0;
       width: 3px;
       background: linear-gradient(180deg, transparent 0%, var(--accent) 25%, var(--accent2) 65%, transparent 100%);
       opacity: 0.75;
       z-index: 2;
     }
 
-    /* Sonar rings — hidden on small screens, decorative only */
     .sonar {
       position: absolute;
-      right: -90px; top: -90px;
+      right: -90px;
+      top: -90px;
       pointer-events: none;
       z-index: 0;
     }
+
     .sonar span {
       position: absolute;
       border-radius: 50%;
       border: 1px solid rgba(0,212,255,0.09);
     }
-    .sonar span:nth-child(1) { width: 240px; height: 240px; right: 0;   top: 0;  }
-    .sonar span:nth-child(2) { width: 170px; height: 170px; right: 35px; top: 35px; border-color: rgba(0,212,255,0.13); }
-    .sonar span:nth-child(3) { width: 100px; height: 100px; right: 70px; top: 70px; border-color: rgba(0,212,255,0.18); }
 
-    /* Grid texture */
+    .sonar span:nth-child(1) {
+      width: 240px;
+      height: 240px;
+      right: 0;
+      top: 0;
+    }
+
+    .sonar span:nth-child(2) {
+      width: 170px;
+      height: 170px;
+      right: 35px;
+      top: 35px;
+      border-color: rgba(0,212,255,0.13);
+    }
+
+    .sonar span:nth-child(3) {
+      width: 100px;
+      height: 100px;
+      right: 70px;
+      top: 70px;
+      border-color: rgba(0,212,255,0.18);
+    }
+
     .card-bg {
       position: absolute;
       inset: 0;
@@ -116,7 +156,6 @@
       z-index: 0;
     }
 
-    /* ── Masthead ── */
     .masthead {
       position: relative;
       z-index: 1;
@@ -178,7 +217,6 @@
       line-height: 1.5;
     }
 
-    /* ── Content ── */
     .content {
       position: relative;
       z-index: 1;
@@ -191,6 +229,7 @@
       gap: 10px;
       margin-bottom: 12px;
     }
+
     .section-label span {
       font-family: 'Space Mono', monospace;
       font-size: 9px;
@@ -199,6 +238,7 @@
       color: var(--muted);
       white-space: nowrap;
     }
+
     .section-label::after {
       content: '';
       flex: 1;
@@ -206,7 +246,6 @@
       background: var(--line);
     }
 
-    /* ── Contact grid ── */
     .contacts {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -227,24 +266,27 @@
       -webkit-tap-highlight-color: transparent;
       transition: border-color 0.15s, background 0.15s;
     }
+
     .contact-item:active {
       background: rgba(0,212,255,0.09);
       border-color: var(--line2);
     }
+
     @media (hover: hover) {
       .contact-item:hover {
         border-color: var(--line2);
         background: rgba(0,212,255,0.07);
       }
     }
+
     .contact-item:focus-visible {
       outline: 2px solid var(--accent);
       outline-offset: 2px;
     }
-    .contact-item.no-link { cursor: default; }
 
     .ci-icon {
-      width: 32px; height: 32px;
+      width: 32px;
+      height: 32px;
       border-radius: 8px;
       background: rgba(0,212,255,0.1);
       display: flex;
@@ -252,8 +294,10 @@
       justify-content: center;
       flex-shrink: 0;
     }
+
     .ci-icon svg {
-      width: 15px; height: 15px;
+      width: 15px;
+      height: 15px;
       stroke: var(--accent);
       fill: none;
       stroke-width: 1.75;
@@ -269,6 +313,7 @@
       color: var(--muted);
       margin-bottom: 2px;
     }
+
     .ci-value {
       font-size: 13px;
       font-weight: 500;
@@ -277,7 +322,6 @@
       word-break: break-word;
     }
 
-    /* ── Action buttons ── */
     .actions {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
@@ -304,23 +348,52 @@
       transition: opacity 0.12s, transform 0.12s;
       touch-action: manipulation;
     }
-    .btn:active { opacity: 0.8; transform: scale(0.97); }
-    @media (hover: hover) {
-      .btn:hover { transform: translateY(-1px); box-shadow: 0 8px 22px rgba(0,0,0,0.28); }
+
+    .btn:active {
+      opacity: 0.8;
+      transform: scale(0.97);
     }
-    .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+    @media (hover: hover) {
+      .btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 8px 22px rgba(0,0,0,0.28);
+      }
+    }
+
+    .btn:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
     .btn svg {
-      width: 16px; height: 16px;
-      stroke: currentColor; fill: none;
-      stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
       flex-shrink: 0;
     }
 
-    .btn-call  { background: var(--accent); color: var(--navy); }
-    .btn-email { background: var(--dim); color: var(--accent); border: 1px solid var(--line2); }
-    .btn-save  { background: var(--steel); color: var(--text); border: 1px solid var(--line); }
+    .btn-call {
+      background: var(--accent);
+      color: var(--navy);
+    }
 
-    /* ── QR panel — hidden on mobile (useless to scan your own phone) ── */
+    .btn-email {
+      background: var(--dim);
+      color: var(--accent);
+      border: 1px solid var(--line2);
+    }
+
+    .btn-save {
+      background: var(--steel);
+      color: var(--text);
+      border: 1px solid var(--line);
+    }
+
     .qr-panel {
       display: grid;
       grid-template-columns: auto 1fr;
@@ -333,7 +406,8 @@
     }
 
     .qr-frame {
-      width: 90px; height: 90px;
+      width: 90px;
+      height: 90px;
       flex-shrink: 0;
       background: var(--white);
       border-radius: 10px;
@@ -341,8 +415,10 @@
       border: 1px solid rgba(255,255,255,0.22);
       box-shadow: 0 8px 22px rgba(0,0,0,0.3);
     }
+
     .qr-frame img {
-      width: 100%; height: 100%;
+      width: 100%;
+      height: 100%;
       display: block;
       border-radius: 5px;
     }
@@ -353,11 +429,13 @@
       color: var(--white);
       margin-bottom: 4px;
     }
+
     .qr-body p {
       font-size: 12px;
       color: var(--muted);
       line-height: 1.5;
     }
+
     .qr-body a {
       display: inline-block;
       margin-top: 6px;
@@ -367,7 +445,6 @@
       text-decoration: none;
     }
 
-    /* ── Footer ── */
     .footer-sig {
       margin-top: 18px;
       padding-top: 14px;
@@ -377,20 +454,32 @@
       gap: 10px;
       flex-wrap: wrap;
     }
-    .depth-dots { display: flex; align-items: center; gap: 4px; }
+
+    .depth-dots {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
     .depth-dots span {
-      width: 4px; height: 4px;
+      width: 4px;
+      height: 4px;
       border-radius: 50%;
       background: var(--accent);
       opacity: 0.25;
     }
-    .depth-dots span.on { opacity: 1; }
+
+    .depth-dots span.on {
+      opacity: 1;
+    }
+
     .footer-loc {
       font-family: 'Space Mono', monospace;
       font-size: 10px;
       color: var(--muted);
       letter-spacing: 1.2px;
     }
+
     .footer-url {
       margin-left: auto;
       font-family: 'Space Mono', monospace;
@@ -400,9 +489,6 @@
       letter-spacing: 0.4px;
     }
 
-    /* ═══════════════════════════════════════════
-       MOBILE — primary target: 375–430px
-    ═══════════════════════════════════════════ */
     @media (max-width: 600px) {
       body {
         align-items: flex-start;
@@ -410,7 +496,6 @@
         padding-right: 12px;
       }
 
-      /* Card takes full width, no rounded corners on sides that touch edge */
       .card {
         border-radius: 18px;
       }
@@ -427,7 +512,6 @@
         margin-bottom: 16px;
       }
 
-      /* Contacts: single column on mobile for easier tapping */
       .contacts {
         grid-template-columns: 1fr;
         gap: 6px;
@@ -443,77 +527,111 @@
         font-size: 14px;
       }
 
-      /* Buttons: 2-col grid, Save full width at bottom */
       .actions {
         grid-template-columns: 1fr 1fr;
         gap: 8px;
       }
+
       .btn-save {
         grid-column: 1 / -1;
       }
+
       .btn {
         min-height: 52px;
         font-size: 15px;
         border-radius: 13px;
       }
 
-      /* QR: hide on mobile — nobody scans their own phone */
-      .qr-panel { display: none; }
+      .qr-panel {
+        display: none;
+      }
 
-      .footer-url { display: none; }
+      .footer-url {
+        display: none;
+      }
 
-      .footer-sig { margin-top: 14px; }
+      .footer-sig {
+        margin-top: 14px;
+      }
     }
 
-    /* Very small phones (320px) */
     @media (max-width: 360px) {
-      body { padding-left: 8px; padding-right: 8px; }
-      .masthead { padding: 18px 14px 16px 18px; }
-      .content  { padding: 16px 14px 20px 18px; }
-      .badge    { display: none; }
+      body {
+        padding-left: 8px;
+        padding-right: 8px;
+      }
+
+      .masthead {
+        padding: 18px 14px 16px 18px;
+      }
+
+      .content {
+        padding: 16px 14px 20px 18px;
+      }
+
+      .badge {
+        display: none;
+      }
     }
 
-    /* Tablet / desktop — restore desktop layout */
     @media (min-width: 601px) {
-      body { align-items: center; padding: 32px 20px; }
+      body {
+        align-items: center;
+        padding: 32px 20px;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .card { animation: none; }
-      .btn, .contact-item { transition: none; }
+      .card {
+        animation: none;
+      }
+
+      .btn,
+      .contact-item {
+        transition: none;
+      }
     }
   </style>
 </head>
+
 <body>
   <main class="page">
     <article class="card" role="main" aria-label="Digital business card of Maurizio Puliafito">
 
       <div class="sonar" aria-hidden="true">
-        <span></span><span></span><span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
+
       <div class="card-bg" aria-hidden="true"></div>
 
-      <!-- Masthead -->
       <header class="masthead">
         <div class="company-row">
           <div class="company">Fincantieri S.p.A.</div>
           <div class="badge">Future on board</div>
         </div>
+
         <h1>Maurizio Puliafito</h1>
+
         <div class="role">Head of Weapon Systems &amp; Underwater Sensors</div>
+
         <div class="dept">Submarines Functional Design Department</div>
       </header>
 
-      <!-- Content -->
       <section class="content">
 
-        <!-- Contact info -->
-        <div class="section-label"><span>Contact</span></div>
+        <div class="section-label">
+          <span>Contact</span>
+        </div>
+
         <div class="contacts">
 
           <a class="contact-item" href="tel:+393421484840" aria-label="Call +39 342 148 4840">
             <div class="ci-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.11 12 19.79 19.79 0 0 1 1.07 3.44 2 2 0 0 1 3.06 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.19a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16.92z"/></svg>
+              <svg viewBox="0 0 24 24">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.11 12 19.79 19.79 0 0 1 1.07 3.44 2 2 0 0 1 3.06 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.19a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16.92z"/>
+              </svg>
             </div>
             <div>
               <div class="ci-label">Phone</div>
@@ -523,7 +641,10 @@
 
           <a class="contact-item" href="mailto:maurizio.puliafito@fincantieri.it" aria-label="Email maurizio.puliafito@fincantieri.it">
             <div class="ci-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+              <svg viewBox="0 0 24 24">
+                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                <path d="m2 7 10 7 10-7"/>
+              </svg>
             </div>
             <div>
               <div class="ci-label">Email</div>
@@ -533,7 +654,13 @@
 
           <a class="contact-item" href="https://www.linkedin.com/in/puliafitomaurizio/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
             <div class="ci-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><line x1="2" y1="9" x2="6" y2="9"/><line x1="4" y1="9" x2="4" y2="21"/><circle cx="4" cy="4" r="2"/></svg>
+              <svg viewBox="0 0 24 24">
+                <rect x="2" y="2" width="20" height="20" rx="5"/>
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <line x1="2" y1="9" x2="6" y2="9"/>
+                <line x1="4" y1="9" x2="4" y2="21"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>
             </div>
             <div>
               <div class="ci-label">LinkedIn</div>
@@ -541,54 +668,73 @@
             </div>
           </a>
 
-          <div class="contact-item no-link" aria-label="Location: Genoa, Italy">
+          <a class="contact-item" href="https://www.google.com/maps/search/?api=1&query=Genoa%2C%20Italy" target="_blank" rel="noopener noreferrer" aria-label="Open Genoa, Italy in Google Maps">
             <div class="ci-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              <svg viewBox="0 0 24 24">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
             </div>
             <div>
               <div class="ci-label">Location</div>
               <div class="ci-value">Genoa, Italy</div>
             </div>
-          </div>
+          </a>
 
         </div>
 
-        <!-- Action buttons -->
-        <div class="section-label"><span>Actions</span></div>
+        <div class="section-label">
+          <span>Actions</span>
+        </div>
+
         <div class="actions">
 
-          <a class="btn btn-call" href="tel:+393421484840" aria-label="Call Maurizio" touch-action="manipulation">
-            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.11 12 19.79 19.79 0 0 1 1.07 3.44 2 2 0 0 1 3.06 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.19a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16.92z"/></svg>
+          <a class="btn btn-call" href="tel:+393421484840" aria-label="Call Maurizio">
+            <svg viewBox="0 0 24 24">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.11 12 19.79 19.79 0 0 1 1.07 3.44 2 2 0 0 1 3.06 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.19a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16.92z"/>
+            </svg>
             Call
           </a>
 
           <a class="btn btn-email" href="mailto:maurizio.puliafito@fincantieri.it" aria-label="Email Maurizio">
-            <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+            <svg viewBox="0 0 24 24">
+              <rect x="2" y="4" width="20" height="16" rx="2"/>
+              <path d="m2 7 10 7 10-7"/>
+            </svg>
             Email
           </a>
 
-          <a class="btn btn-save"
-            href="data:text/vcard;charset=utf-8,BEGIN%3AVCARD%0AVERSION%3A3.0%0AN%3APuliafito%3BMaurizio%3B%3B%3B%0AFN%3AMaurizio%20Puliafito%0AORG%3AFincantieri%20S.p.A.%0ATITLE%3AHead%20of%20Weapon%20Systems%20%26%20Underwater%20Sensors%0AROLE%3ASubmarines%20Functional%20Design%20Department%0ATEL%3BTYPE%3DCELL%2CVOICE%3A%2B39%20342%20148%204840%0AEMAIL%3BTYPE%3DINTERNET%2CWORK%3Amaurizio.puliafito%40fincantieri.it%0AADR%3BTYPE%3DWORK%3A%3B%3BFincantieri%20S.p.A.%3BGenoa%3B%3BItaly%0AURL%3BTYPE%3DLinkedIn%3Ahttps%3A%2F%2Fwww.linkedin.com%2Fin%2Fpuliafitomaurizio%2F%0AEND%3AVCARD"
+          <a
+            class="btn btn-save"
+            href="Maurizio_Puliafito.vcf"
             download="Maurizio_Puliafito.vcf"
-            aria-label="Save contact to phone">
-            <svg viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+            aria-label="Save contact to phone"
+          >
+            <svg viewBox="0 0 24 24">
+              <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+              <polyline points="17 21 17 13 7 13 7 21"/>
+              <polyline points="7 3 7 8 15 8"/>
+            </svg>
             Save
           </a>
 
         </div>
 
-        <!-- QR panel (desktop/tablet only — hidden on mobile) -->
-        <div class="section-label"><span>Share</span></div>
+        <div class="section-label">
+          <span>Share</span>
+        </div>
+
         <div class="qr-panel" aria-label="QR code to share this page">
           <div class="qr-frame">
             <img
-              src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&color=000000&bgcolor=FFFFFF&data=https%3A%2F%2Fmauriziopuliafito.github.io"
+              src="qr-code.png"
               alt="QR code — scan to open mauriziopuliafito.github.io"
               loading="lazy"
               width="90"
               height="90"
             >
           </div>
+
           <div class="qr-body">
             <h3>Digital business card</h3>
             <p>Scan to open and share this page instantly from any device.</p>
@@ -598,7 +744,6 @@
           </div>
         </div>
 
-        <!-- Footer -->
         <div class="footer-sig" aria-hidden="true">
           <div class="depth-dots">
             <span class="on"></span>
@@ -607,7 +752,9 @@
             <span></span>
             <span></span>
           </div>
+
           <span class="footer-loc">GENOA · ITALY</span>
+
           <a class="footer-url" href="https://mauriziopuliafito.github.io" target="_blank" rel="noopener noreferrer">
             mauriziopuliafito.github.io
           </a>
@@ -618,3 +765,4 @@
   </main>
 </body>
 </html>
+```
