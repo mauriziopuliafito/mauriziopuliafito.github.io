@@ -573,6 +573,39 @@
       letter-spacing: 0.4px;
     }
 
+    @keyframes saveMobileBlink {
+      0%, 100% {
+        background: var(--steel);
+        color: var(--text);
+        border-color: var(--line);
+        box-shadow: 0 0 0 rgba(0,212,255,0);
+      }
+
+      45% {
+        background: var(--accent);
+        color: var(--navy);
+        border-color: var(--accent);
+        box-shadow: 0 0 18px rgba(0,212,255,0.35);
+      }
+
+      55% {
+        background: var(--accent);
+        color: var(--navy);
+        border-color: var(--accent);
+        box-shadow: 0 0 22px rgba(0,212,255,0.42);
+      }
+    }
+
+    @keyframes saveMobilePulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.03);
+      }
+    }
+
     @media (max-width: 600px) {
       body {
         align-items: flex-start;
@@ -626,6 +659,12 @@
         border-radius: 13px;
       }
 
+      .btn-save {
+        animation:
+          saveMobileBlink 2.2s ease-in-out infinite,
+          saveMobilePulse 2.2s ease-in-out infinite;
+      }
+
       .share-label {
         display: none;
       }
@@ -677,6 +716,10 @@
       .btn,
       .contact-item {
         transition: none;
+      }
+
+      .btn-save {
+        animation: none;
       }
     }
   </style>
